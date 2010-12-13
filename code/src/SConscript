@@ -1,0 +1,20 @@
+Import('env')
+
+prefix = '/usr/local'
+lib_path = prefix + '/lib'
+inc_path = prefix + '/include'
+
+sources = ["1394API.cpp",
+           "ConfigRom.cpp",
+           "HSS1394.cpp"]
+env.Append(CPPPATH=".")
+if env['PLATFORM'] == 'darwin':
+    sources += ["osx/1394API_OSX.cpp"]
+    env.Append(FRAMEWORKS=['IOKit', 'CoreFoundation', 'Carbon'])
+    env.Append(SHLINKFLAGS='-install_name /usr/local/libhss1394.dylib')
+hss1394lib = env.SharedLibrary(target='hss1394', source=sources)
+
+env.Install(lib_path, hss1394lib)
+env.Install(inc_path, ['HSS1394.h', 'HSS1394Types.h'])
+env.Alias('install', lib_path)
+env.Alias('install', inc_path)
