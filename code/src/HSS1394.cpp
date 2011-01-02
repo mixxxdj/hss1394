@@ -39,6 +39,7 @@
 //*****************************************************************************
 #include <string>		// STL string class
 #include <vector>		// STL vector template
+#include <assert.h>     // C ASSERT macros
 #include "HSS1394.h"	// HSS1394 includes
 #include "1394API.h"	// Cross-platform 1394 interface layer
 
