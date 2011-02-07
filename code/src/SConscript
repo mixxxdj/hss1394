@@ -31,7 +31,7 @@ if using_osx_104_sdk:
 
 prefix = ARGUMENTS.get('prefix', '/usr/local')
 lib_path = prefix + '/lib'
-inc_path = prefix + '/include'
+inc_path = prefix + '/include/hss1394'
 
 sources = ["1394API.cpp",
            "ConfigRom.cpp",
