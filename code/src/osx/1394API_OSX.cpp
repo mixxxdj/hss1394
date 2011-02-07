@@ -367,7 +367,7 @@ UInt32 local1394WriteHandler(
 	// silently discard the packet (limit resource usage).
 	pthread_mutex_lock(&smPacketListMutex);
 	if (slPacketList.size() < kMaxUnservicedPackets) {
-		slPacketList.push_back(new hss1394::Packet(uNodeId, (uint8*)pData, uDataLength));
+		slPacketList.push_back(new hss1394::Packet(uNodeId, (uint8_t*)pData, uDataLength));
 		pthread_cond_signal(&scPacketListCondition);		
 	}
 	pthread_mutex_unlock(&smPacketListMutex);
