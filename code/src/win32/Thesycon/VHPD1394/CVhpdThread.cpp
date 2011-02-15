@@ -161,10 +161,12 @@ void CVhpdThread::OnThreadEntry(void)
 
 void CVhpdThread::OnThreadExit(void)
 {
+#ifndef _WIN64_
   // send notification message to parent window
   if(mParentWnd != NULL) {
     ::PostMessage(mParentWnd,WM_USER_THREAD_TERMINATED,0,0);
   }
+#endif
 }
 
  
