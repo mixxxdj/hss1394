@@ -61,7 +61,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(SolutionDir)\..\..\..\lib\libHSS1394_Win32_Debug.lib"
+				AdditionalDependencies="$(SolutionDir)\..\..\..\..\lib\libHSS1394_Win32_Debug.lib"
 				LinkIncremental="2"
 				GenerateDebugInformation="true"
 				SubSystem="1"
@@ -136,7 +136,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(SolutionDir)\..\..\..\lib\libHSS1394_Win32_Release.lib"
+				AdditionalDependencies="$(SolutionDir)\..\..\..\..\lib\libHSS1394_Win32_Release.lib"
 				LinkIncremental="1"
 				GenerateDebugInformation="true"
 				SubSystem="1"
@@ -174,11 +174,11 @@
 	</References>
 	<Files>
 		<File
-			RelativePath="..\..\src\1394API.h"
+			RelativePath="..\..\..\src\1394API.h"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\TestHSS1394.cpp"
+			RelativePath="..\..\..\src\TestHSS1394.cpp"
 			>
 		</File>
 	</Files>
