@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.13.0)
+cmake_minimum_required(VERSION 3.1.0)
 project(hss1374 VERSION 1.0.0)
 set(CMAKE_PROJECT_HOMEPAGE_URL "https://www.mixxx.org")
 set(CMAKE_PROJECT_DESCRIPTION "High-speed MIDI-over-Firewire device access library for Windows and macOS.")
