@@ -18,7 +18,7 @@ target_include_directories(hss1394 PRIVATE
 )
 
 if(APPLE)
-  target_sources(hss1394 PRIVATE src/osx/1394API_OSX.cpp)
+  target_sources(hss1394 PRIVATE src/macos/1394API_OSX.cpp)
 
   find_library(IOKit_LIBRARY IOKit REQUIRED)
   target_link_libraries(hss1394 PUBLIC ${IOKit_LIBRARY})
