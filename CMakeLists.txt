@@ -29,8 +29,10 @@ if(APPLE)
   if(CMAKE_OSX_DEPLOYMENT_TARGET STREQUAL "10.4u")
     target_compile_definitions(hss1394 PRIVATE "OSX10_4")
   endif()
-else()
+elseif(WIN32)
     target_compile_definitions(hss1394 PRIVATE "_WIN32_")
+else()
+    message(FATAL_ERROR "Operating system not supported")
 endif()
 
 #
