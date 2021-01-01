@@ -8,14 +8,17 @@ set(CMAKE_PROJECT_DESCRIPTION "High-speed MIDI-over-Firewire device access libra
 #
 
 add_library(hss1394
-  code/src/1394API.cpp
-  code/src/ConfigRom.cpp
-  code/src/HSS1394.cpp
+  src/1394API.cpp
+  src/ConfigRom.cpp
+  src/HSS1394.cpp
 )
-target_include_directories(hss1394 PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/code/src")
+target_include_directories(hss1394 PRIVATE
+  "${CMAKE_CURRENT_SOURCE_DIR}/include"
+  "${CMAKE_CURRENT_SOURCE_DIR}/src"
+)
 
 if(APPLE)
-  target_sources(hss1394 PRIVATE code/src/osx/1394API_OSX.cpp)
+  target_sources(hss1394 PRIVATE src/osx/1394API_OSX.cpp)
 
   find_library(IOKit_LIBRARY IOKit REQUIRED)
   target_link_libraries(hss1394 PUBLIC ${IOKit_LIBRARY})
@@ -47,7 +50,7 @@ install(
 
 install(
   FILES
-    "${CMAKE_CURRENT_SOURCE_DIR}/code/src/HSS1394.h"
-    "${CMAKE_CURRENT_SOURCE_DIR}/code/src/HSS1394Types.h"
+    "${CMAKE_CURRENT_SOURCE_DIR}/include/HSS1394.h"
+    "${CMAKE_CURRENT_SOURCE_DIR}/include/HSS1394Types.h"
   DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/hss1394"
 )
