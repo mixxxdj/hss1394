@@ -11,8 +11,10 @@ jobs:
         include:
           - name: macOS 10.15
             os: macos-10.15
+            install_dir: ~/hss1394
           - name: Windows 2019 (MSVC)
             os: windows-2019
+            install_dir: D:\hss1394
             cc: cl
             cxx: cl
 
@@ -39,7 +41,7 @@ jobs:
       run: mkdir build
 
     - name: "Configure"
-      run: cmake ..
+      run: cmake -DCMAKE_INSTALL_PREFIX=${{ matrix.install_dir }} ..
       working-directory: build
       env:
         CC: ${{ matrix.cc }}
@@ -59,3 +61,12 @@ jobs:
       env:
         CC: ${{ matrix.cc }}
         CXX: ${{ matrix.cxx }}
+
+    - name: "Install"
+      run: cmake --build build --target install
+
+    - name: "Upload artifact"
+      uses: actions/upload-artifact@v2
+      with:
+        name: ${{ matrix.os }}
+        path: ${{ matrix.install_dir }}
