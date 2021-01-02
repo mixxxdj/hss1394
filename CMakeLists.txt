@@ -42,19 +42,19 @@ elseif(WIN32)
   endif()
 
   # Add header-only library dependency ST1394_ASIO
-  target_include_directories(hss1394 SYSTEM PRIVATE src/win32/Thesycon/ST1394_ASIO)
+  target_include_directories(hss1394 SYSTEM PRIVATE lib/ST1394_ASIO)
 
   # Add library dependency VHPD1304
   add_library(vhpd1394 OBJECT
-    src/win32/Thesycon/VHPD1394/CVhpdAsyncSlave.cpp
-    src/win32/Thesycon/VHPD1394/CVhpdBuf.cpp
-    src/win32/Thesycon/VHPD1394/CVhpd.cpp
-    src/win32/Thesycon/VHPD1394/CVhpdDataSlave.cpp
-    src/win32/Thesycon/VHPD1394/CVhpdNotifySlave.cpp
-    src/win32/Thesycon/VHPD1394/CVhpdThread.cpp
-    src/win32/Thesycon/VHPD1394/SetupApiDll.cpp
+    lib/VHPD1394/CVhpdAsyncSlave.cpp
+    lib/VHPD1394/CVhpdBuf.cpp
+    lib/VHPD1394/CVhpd.cpp
+    lib/VHPD1394/CVhpdDataSlave.cpp
+    lib/VHPD1394/CVhpdNotifySlave.cpp
+    lib/VHPD1394/CVhpdThread.cpp
+    lib/VHPD1394/SetupApiDll.cpp
   )
-  target_include_directories(vhpd1394 SYSTEM PUBLIC src/win32/Thesycon/VHPD1394)
+  target_include_directories(vhpd1394 SYSTEM PUBLIC lib/VHPD1394)
   target_link_libraries(hss1394 PRIVATE vhpd1394)
 else()
     message(FATAL_ERROR "Operating system not supported")
