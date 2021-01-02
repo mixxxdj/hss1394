@@ -20,5 +20,5 @@ From the top directory of this source code repository, run:
 
 ## License
 
-The HSS1394 library is licensed under the terms of the GNU Lesser General Public License (LGPL) version 3.
+The HSS1394 library is licensed under the terms of the GNU Lesser General Public License (LGPL) version 3 or later.
 See [`LICENSE`](LICENSE) for details.
