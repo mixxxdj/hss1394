@@ -37,7 +37,7 @@ elseif(WIN32)
   target_include_directories(hss1394 SYSTEM PRIVATE code/src/win32/Thesycon/ST1394_ASIO)
 
   # Add library dependency VHPD1304
-  add_library(vhpd1394 STATIC
+  add_library(vhpd1394 OBJECT
     code/src/win32/Thesycon/VHPD1394/CVhpdAsyncSlave.cpp
     code/src/win32/Thesycon/VHPD1394/CVhpdBuf.cpp
     code/src/win32/Thesycon/VHPD1394/CVhpd.cpp
