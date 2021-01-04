@@ -3,6 +3,8 @@ project(hss1394 VERSION 1.0.0)
 set(CMAKE_PROJECT_HOMEPAGE_URL "https://www.mixxx.org")
 set(CMAKE_PROJECT_DESCRIPTION "High-speed MIDI-over-Firewire device access library for Windows and macOS.")
 
+option(BUILD_SHARED_LIBS "Build dynamic library" ON)
+
 #
 # Build
 #
@@ -31,7 +33,10 @@ if(APPLE)
   endif()
 elseif(WIN32)
   target_sources(hss1394 PRIVATE code/src/win32/1394API_VHPD1394.cpp)
-  target_compile_definitions(hss1394 PRIVATE "_WIN32_" "HSS1394_EXPORT_DLL")
+  target_compile_definitions(hss1394 PRIVATE "_WIN32_")
+  if(BUILD_SHARED_LIBS)
+    target_compile_definitions(hss1394 PRIVATE "HSS1394_EXPORT_DLL")
+  endif()
 
   # Add header-only library dependency ST1394_ASIO
   target_include_directories(hss1394 SYSTEM PRIVATE code/src/win32/Thesycon/ST1394_ASIO)
