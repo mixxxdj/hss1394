@@ -1,0 +1,5 @@
+@PACKAGE_INIT@
+
+include("${CMAKE_CURRENT_LIST_DIR}/HSS1394Targets.cmake")
+
+check_required_components(HSS1394)
