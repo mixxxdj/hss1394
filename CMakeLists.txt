@@ -33,10 +33,6 @@ if(APPLE)
 
   find_library(Carbon_LIBRARY Carbon REQUIRED)
   target_link_libraries(hss1394 PUBLIC ${Carbon_LIBRARY})
-
-  if(CMAKE_OSX_DEPLOYMENT_TARGET STREQUAL "10.4u")
-    target_compile_definitions(hss1394 PRIVATE "OSX10_4")
-  endif()
 elseif(WIN32)
   target_sources(hss1394 PRIVATE src/1394API_VHPD1394.cpp)
   target_compile_definitions(hss1394 PRIVATE "_WIN32_")

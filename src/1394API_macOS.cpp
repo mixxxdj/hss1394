@@ -344,21 +344,12 @@ static bool localOpenBus(void) {
 // Callback for arrival/processing of 1394 packet.
 //-----------------------------------------------------------------------------
 static
-#ifdef OSX10_4
 UInt32 local1394WriteHandler(
 							 IOFireWireLibPseudoAddressSpaceRef pAddressSpace,
 							 FWClientCommandID tCommandID,
 							 UInt32 uDataLength, void* pData,
-							 UInt16 uNodeId, UInt32 uAddressHi, 
-							 UInt32 uAddressLo, UInt32 refCon)
-#else
-UInt32 local1394WriteHandler(
-							 IOFireWireLibPseudoAddressSpaceRef pAddressSpace,
-							 FWClientCommandID tCommandID,
-							 UInt32 uDataLength, void* pData,
-							 UInt16 uNodeId, UInt32 uAddressHi, 
+							 UInt16 uNodeId, UInt32 uAddressHi,
 							 UInt32 uAddressLo, void* refCon)
-#endif
 {
 	// Remove Bus number data (ignored)
 	uNodeId &= 0x3f;	
