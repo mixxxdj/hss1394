@@ -4,6 +4,7 @@
 
 HSS1394 is a high-speed MIDI-over-Firewire protocol developed by Stanton Magnetics, Inc.
 This project contains the library code that interfaces with HSS1394 devices on Windows and macOS, such as the Stanton SCS.1 controller series.
+This library is unnecessary on Linux because support for these devices is integrated into the kernel (ALSA).
 
 This library is maintained by the [Mixxx DJ Software](https://mixxx.org/) team.
 Contributions are welcome by opening pull requests and issues on [GitHub](https://github.com/mixxxdj/hss1394).
