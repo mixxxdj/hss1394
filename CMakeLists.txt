@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.1.0)
+cmake_minimum_required(VERSION 3.4.0)
 project(HSS1394 VERSION 1.0.0)
 set(CMAKE_PROJECT_HOMEPAGE_URL "https://www.mixxx.org")
 set(CMAKE_PROJECT_DESCRIPTION "High-speed MIDI-over-Firewire device access library for Windows and macOS.")
@@ -36,9 +36,6 @@ if(APPLE)
 elseif(WIN32)
   target_sources(hss1394 PRIVATE src/1394API_VHPD1394.cpp)
   target_compile_definitions(hss1394 PRIVATE "_WIN32_")
-  if(BUILD_SHARED_LIBS)
-    target_compile_definitions(hss1394 PRIVATE "HSS1394_EXPORT_DLL")
-  endif()
 
   # Add header-only library dependency ST1394_ASIO
   target_include_directories(hss1394 SYSTEM PRIVATE lib/ST1394_ASIO)
@@ -55,8 +52,12 @@ elseif(WIN32)
   )
   target_include_directories(vhpd1394 SYSTEM PUBLIC lib/VHPD1394)
   target_link_libraries(hss1394 PRIVATE vhpd1394)
+  
+  set_target_properties(hss1394 PROPERTIES
+    WINDOWS_EXPORT_ALL_SYMBOLS TRUE
+  )
 else()
-    message(FATAL_ERROR "Operating system not supported")
+  message(FATAL_ERROR "Operating system not supported")
 endif()
 
 #

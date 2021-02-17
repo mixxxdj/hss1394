@@ -37,23 +37,6 @@
 #ifndef _HSS1394_
 #define _HSS1394_
 
-
-#if defined(_WIN32)
-#if defined(HSS1394_EXPORT_DLL)
-#define HSS1394_CLASS_CONVENTION __declspec(dllexport)
-#elif defined(HSS1394_IMPORT_DLL)
-#define HSS1394_CLASS_CONVENTION __declspec(dllimport)
-#else
-#define HSS1394_CLASS_CONVENTION  // static import
-#endif
-
-#else // _WIN32
-
-#define HSS1394_CLASS_CONVENTION  // static import
-
-#endif // _WIN32
-
-
 //*** Includes
 //*****************************************************************************
 #include <string>			// STL string class
@@ -85,7 +68,7 @@ namespace hss1394 {
 	//! HSS1394 interface changes - ie. connections appear or disappear on the
 	//! network.
 	//-----------------------------------------------------------------------------
-	class HSS1394_CLASS_CONVENTION Listener {
+	class Listener {
 		public:
 			//! ::Do method is called when the nodes in the HSS1394 network have changed.
 			virtual void Do(void) = 0;
@@ -95,7 +78,7 @@ namespace hss1394 {
 	// ChannelListener::
 	//! Callback object for an incomming data channel. 
 	//-----------------------------------------------------------------------------
-	class HSS1394_CLASS_CONVENTION ChannelListener {
+	class ChannelListener {
 		public:
 			// :: Process is called when data has arrived. The arguments present
 			//! the data. On completion of this call, pBuffer is no longer valid.
@@ -117,7 +100,7 @@ namespace hss1394 {
 	//! Abstraction of a channel endpoint at the host communicating with a
 	//! remote HSS1394 node.
 	//-----------------------------------------------------------------------------
-	class HSS1394_CLASS_CONVENTION Channel {
+	class Channel {
 		public:
 			//! Stop data transmission/reception. After this call all send and
 			//! receive calls will fail with a zero return.
@@ -177,7 +160,7 @@ namespace hss1394 {
 	// Node::
 	//! Singleton High-speed serial over 1394 host node interface.
 	//-----------------------------------------------------------------------------
-	class HSS1394_CLASS_CONVENTION Node {
+	class Node {
 		protected:
 			static Node *mspInstance;	//!< Singleton instance of class
 
